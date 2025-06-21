@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://0c32kepv0ahx"]
+[gd_scene load_steps=32 format=3 uid="uid://0c32kepv0ahx"]
 
 [ext_resource type="Script" uid="uid://dc3bukoacyq60" path="res://addons/cogito/Scripts/player_hud_manager.gd" id="1_0wdkf"]
 [ext_resource type="PackedScene" uid="uid://dhlrhobg5d4dj" path="res://addons/cogito/Components/UI/UI_PromptComponent.tscn" id="3_06ipe"]
@@ -40,18 +40,6 @@ font_size = 36
 [sub_resource type="LabelSettings" id="LabelSettings_ossw8"]
 font_size = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jei3"]
-resource_local_to_scene = true
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu3l5"]
-resource_local_to_scene = true
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmpwe"]
-resource_local_to_scene = true
-bg_color = Color(1, 1, 1, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eka6m"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -59,7 +47,7 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.101961, 0.101961, 0.101961, 0.784314)
 
-[node name="Player_HUD" type="Control" node_paths=PackedStringArray("fixed_stamina_bar", "ui_currency_area", "attribute_display_node")]
+[node name="Player_HUD" type="Control" node_paths=PackedStringArray("fixed_stamina_bar", "ui_currency_area")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,11 +63,11 @@ ui_attribute_prefab = ExtResource("20_lscav")
 ui_currency_prefab = ExtResource("6_kmqyf")
 fixed_stamina_bar = NodePath("FixedStaminaBar")
 ui_currency_area = NodePath("InventoryInterface/CogitoTabMenu/Inventory/PlayerCurrencies/MarginContainer/VBoxContainer")
-attribute_display_node = NodePath("InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer/TabContainer/Attributes")
 ui_attribute_display_prefab = ExtResource("20_3jei3")
 only_show_interface_attributes = null
 
 [node name="FixedStaminaBar" parent="." instance=ExtResource("20_lscav")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -232,6 +220,7 @@ text = "00"
 label_settings = SubResource("LabelSettings_ossw8")
 
 [node name="PlayerAttributes" type="PanelContainer" parent="MarginContainer_BottomUI"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -279,7 +268,7 @@ offset_bottom = 219.0
 theme = ExtResource("5_j6s1a")
 current_tab = 0
 script = ExtResource("24_3jei3")
-nodes_to_focus = [NodePath("Inventory/InventoryUI"), NodePath("Quests/QuestDisplay/VBoxContainer/TabContainer/Active"), NodePath("Stats/QuestDisplay/VBoxContainer/TabContainer/Attributes")]
+nodes_to_focus = [NodePath("Inventory/InventoryUI"), NodePath("Quests/QuestDisplay/VBoxContainer/TabContainer/Active"), null]
 inventory_interface_reference = NodePath("..")
 metadata/_custom_type_script = "uid://c656a651xkd0c"
 
@@ -370,56 +359,6 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
-
-[node name="Stats" type="Control" parent="InventoryInterface/CogitoTabMenu"]
-visible = false
-layout_mode = 2
-theme = ExtResource("5_j6s1a")
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 2
-
-[node name="QuestDisplay" type="PanelContainer" parent="InventoryInterface/CogitoTabMenu/Stats"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 166.0
-theme = ExtResource("5_j6s1a")
-theme_type_variation = &"HUDPanel"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_j6s1a")
-theme_type_variation = &"PromptLabel"
-theme_override_font_sizes/font_size = 24
-text = "Stats"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TabContainer" type="TabContainer" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_j6s1a")
-current_tab = 0
-
-[node name="Attributes" type="VBoxContainer" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer/TabContainer"]
-layout_mode = 2
-theme = ExtResource("5_j6s1a")
-theme_override_constants/separation = 4
-metadata/_tab_index = 0
-
-[node name="UiAttributeDisplay" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer/TabContainer/Attributes" instance=ExtResource("20_3jei3")]
-layout_mode = 2
-bar_stylebox = SubResource("StyleBoxFlat_3jei3")
-
-[node name="UiAttributeDisplay2" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer/TabContainer/Attributes" instance=ExtResource("20_3jei3")]
-layout_mode = 2
-bar_stylebox = SubResource("StyleBoxFlat_eu3l5")
-
-[node name="UiAttributeDisplay3" parent="InventoryInterface/CogitoTabMenu/Stats/QuestDisplay/VBoxContainer/TabContainer/Attributes" instance=ExtResource("20_3jei3")]
-layout_mode = 2
-bar_stylebox = SubResource("StyleBoxFlat_vmpwe")
 
 [node name="ExternalInventoryUI" parent="InventoryInterface" instance=ExtResource("3_krf2d")]
 visible = false

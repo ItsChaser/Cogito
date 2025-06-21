@@ -90,7 +90,7 @@ func _setup_player():
 
 	connect_to_player_signals()
 	instantiate_player_attribute_ui()
-	instantiate_interface_attributes()
+	#instantiate_interface_attributes()
 	instantiate_player_currency_ui()
 	
 	# Fill inventory HUD with player inventory

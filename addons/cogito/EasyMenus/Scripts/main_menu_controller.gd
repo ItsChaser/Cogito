@@ -6,6 +6,12 @@ signal start_game_pressed
 @onready var options_tab_menu: OptionsTabMenu = $ContentMain/OptionsTabMenu
 @onready var options_button: CogitoUiButton = $ContentMain/GameMenu/VBoxContainer/OptionsButton
 
+# NEW: Array to hold paths to your different menu themes
+@export var menu_themes: Array[Theme] # Drag your .tres Theme files here in the inspector
+
+# You can also define a folder path if you prefer to load all themes from it
+# @export var menu_themes_folder_path: String = "res://Themes/Menu/"
+
 #region UI AUDIO
 @export var sound_hover : AudioStream
 @export var sound_click : AudioStream
@@ -46,6 +52,13 @@ func _play_pressed() -> void:
 
 
 func _ready():
+	# --- NEW CODE FOR RANDOM THEME ---
+	if menu_themes.size() > 0:
+		var random_index = randi() % menu_themes.size()
+		self.theme = menu_themes[random_index] # Apply the random theme to the root Control node
+		print("Loaded menu theme: ", menu_themes[random_index].resource_path) # For debugging
+	# --- END NEW CODE ---
+
 	first_focus_button.grab_focus()
 
 

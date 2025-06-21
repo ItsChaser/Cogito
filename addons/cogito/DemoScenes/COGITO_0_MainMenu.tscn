@@ -10,6 +10,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2579.0
+offset_bottom = 1398.0
+color = Color(0.784314, 0.298039, 0.211765, 1)
+
 [node name="MainMenu" parent="." instance=ExtResource("1_jlj1d")]
 layout_mode = 1
 

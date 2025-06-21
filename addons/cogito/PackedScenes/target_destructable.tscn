@@ -60,6 +60,7 @@ height = 0.1
 [node name="TargetDestructable" type="RigidBody3D"]
 gravity_scale = 0.0
 script = ExtResource("1_e8c88")
+cogito_name = ""
 
 [node name="HealthAttribute" parent="." instance=ExtResource("1_c1b02")]
 sound_on_death = ExtResource("4_k2oo6")

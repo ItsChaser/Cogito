@@ -153,7 +153,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.488, 0)
 stream = SubResource("AudioStreamRandomizer_af0lu")
 volume_db = -38.0
 max_polyphony = 8
-bus = &"SFX"
 script = ExtResource("17_t5305")
 generic_fallback_footstep_profile = ExtResource("18_mdors")
 footstep_material_library = ExtResource("19_pc36t")
